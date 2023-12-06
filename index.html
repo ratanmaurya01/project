@@ -5,59 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcene to new  project page </title>
 </head>
-<!-- <p id="serverDateTime"></p>
-
-<script>
-  // Function to fetch and display server time
-  function fetchServerTime() {
-    fetch('https://worldtimeapi.org/api/ip') // Using worldtimeapi.org to get server time based on IP
-      .then(response => response.json())
-      .then(data => {
-        // Extract the server time from the API response
-        const serverTime = new Date(data.utc_datetime);
-
-        // Display the server time in the HTML element with the 'serverDateTime' ID
-        document.getElementById('serverDateTime').innerHTML = 'Server Time: ' + serverTime.toLocaleString();
-      })
-      .catch(error => {
-        console.error('Error fetching server time:', error);
-      });
-  }
-
-  // Call the function to initially fetch and display server time
-  fetchServerTime(); -->
-
-  // Update the server time every 5 seconds (example interval, you can adjust this as needed)
-  setInterval(fetchServerTime, 5000); // 5000 milliseconds = 5 seconds
-</script>
-
+<body>
+    
     <p id="serverTimestamp"></p>
 
-<script>
-  // Function to fetch and display server time as a timestamp
-  function fetchServerTimeAsTimestamp() {
-    fetch('https://worldtimeapi.org/api/ip')
-      .then(response => response.json())
-      .then(data => {
-        // Extract the server time from the API response
-        const serverTime = new Date(data.utc_datetime);
-        
-        // Convert server time to Unix timestamp (in seconds)
-        const timestamp = Math.floor(serverTime.getTime() / 1000); // Divide by 1000 to get seconds
-        
-        // Display the server time as a Unix timestamp
-        document.getElementById('serverTimestamp').innerHTML = 'Server Time (Unix Timestamp): ' + timestamp;
-      })
-      .catch(error => {
-        console.error('Error fetching server time:', error);
-      });
-  }
-
-  // Call the function to initially fetch and display server time as a timestamp
-  fetchServerTimeAsTimestamp();
-
-  // Update the server time every 5 seconds (example interval, you can adjust this as needed)
-  setInterval(fetchServerTimeAsTimestamp, 5000); // 5000 milliseconds = 5 seconds
-</script>
+    <script>
+      // Function to fetch and display server time as a timestamp
+      function fetchServerTimeAsTimestamp() {
+        fetch('https://worldtimeapi.org/api/ip')
+          .then(response => response.json())
+          .then(data => {
+            // Extract the server time from the API response
+            const serverTime = new Date(data.utc_datetime);
+            
+            // Convert server time to Unix timestamp (in seconds)
+            const timestamp = Math.floor(serverTime.getTime() / 1000); // Divide by 1000 to get seconds
+            
+            // Display the server time as a Unix timestamp
+            document.getElementById('serverTimestamp').innerHTML = 'Server Time (Unix Timestamp): ' + timestamp;
+          })
+          .catch(error => {
+            console.error('Error fetching server time:', error);
+          });
+      }
+    
+      // Call the function to initially fetch and display server time as a timestamp
+      fetchServerTimeAsTimestamp();
+    
+      // Update the server time every 5 seconds (example interval, you can adjust this as needed)
+      setInterval(fetchServerTimeAsTimestamp, 5000); // 5000 milliseconds = 5 seconds
+    </script>
 </body>
 </html>
