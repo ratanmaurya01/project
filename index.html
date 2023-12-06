@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcene to new  project page </title>
 </head>
-<p id="serverDateTime"></p>
+<!-- <p id="serverDateTime"></p>
 
 <script>
   // Function to fetch and display server time
@@ -25,10 +25,39 @@
   }
 
   // Call the function to initially fetch and display server time
-  fetchServerTime();
+  fetchServerTime(); -->
 
   // Update the server time every 5 seconds (example interval, you can adjust this as needed)
   setInterval(fetchServerTime, 5000); // 5000 milliseconds = 5 seconds
+</script>
+
+    <p id="serverTimestamp"></p>
+
+<script>
+  // Function to fetch and display server time as a timestamp
+  function fetchServerTimeAsTimestamp() {
+    fetch('https://worldtimeapi.org/api/ip')
+      .then(response => response.json())
+      .then(data => {
+        // Extract the server time from the API response
+        const serverTime = new Date(data.utc_datetime);
+        
+        // Convert server time to Unix timestamp (in seconds)
+        const timestamp = Math.floor(serverTime.getTime() / 1000); // Divide by 1000 to get seconds
+        
+        // Display the server time as a Unix timestamp
+        document.getElementById('serverTimestamp').innerHTML = 'Server Time (Unix Timestamp): ' + timestamp;
+      })
+      .catch(error => {
+        console.error('Error fetching server time:', error);
+      });
+  }
+
+  // Call the function to initially fetch and display server time as a timestamp
+  fetchServerTimeAsTimestamp();
+
+  // Update the server time every 5 seconds (example interval, you can adjust this as needed)
+  setInterval(fetchServerTimeAsTimestamp, 5000); // 5000 milliseconds = 5 seconds
 </script>
 </body>
 </html>
